@@ -3,10 +3,9 @@ const template = document.querySelector('#card-template').content;
 const placesList = document.querySelector('.places__list');
 
 // Функция удаления карточки
-function deleteCard(event) {
-    const card = event.target.closest('.card');
-    card.remove();
-}
+function deleteCard(cardElement) {
+    cardElement.remove();
+};
 
 // Функция создания карточки
 function createCard(cardData, deleteCallback) {
@@ -22,7 +21,7 @@ function createCard(cardData, deleteCallback) {
 
     // Обработчик для кнопки удаления
     const deleteButton = cardElement.querySelector('.card__delete-button');
-    deleteButton.addEventListener('click', deleteCallback);
+    deleteButton.addEventListener('click', () => deleteCallback(cardElement));
 
     return cardElement;
 }
