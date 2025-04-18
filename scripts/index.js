@@ -11,7 +11,7 @@ function deleteCard(event) {
 // Функция создания карточки
 function createCard(cardData, deleteCallback) {
     // Клонируем содержимое шаблона
-    const cardElement = template.cloneNode(true);
+    const cardElement = template.querySelector(".card").cloneNode(true);
 
     // Устанавливаем значения для карточки
     const cardImage = cardElement.querySelector('.card__image');
