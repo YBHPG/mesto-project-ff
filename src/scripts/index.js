@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import { openModal, closeModal, addPopupEventListeners } from '../components/modal.js';
 import { createCard } from '../components/card.js';
-import { initialCards } from '../components/utils.js';
+import { initialCards } from './cards.js';
 
 // Глобальные переменные
 const profileEditButton = document.querySelector('.profile__edit-button');
