@@ -1,6 +1,6 @@
 import '../pages/index.css';
 import { openModal, closeModal, addPopupEventListeners } from '../components/modal.js';
-import { createCard } from '../components/card.js';
+import { createCard, handleLikeClick, handleDeleteClick } from '../components/card.js';
 import { initialCards } from './cards.js';
 
 // Глобальные переменные
@@ -33,14 +33,16 @@ profileEditButton.addEventListener('click', () => {
 
 addCardButton.addEventListener('click', () => openModal(addCardPopup));
 
-profileForm.addEventListener('submit', (evt) => {
+// Функция-обработчик для формы редактирования профиля
+function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
     closeModal(profilePopup);
-});
+}
 
-addCardForm.addEventListener('submit', (evt) => {
+// Функция-обработчик для формы добавления карточки
+function submitAddCardForm(evt) {
     evt.preventDefault();
     const newCard = createCard(
         { name: cardNameInput.value, link: cardLinkInput.value },
@@ -51,7 +53,11 @@ addCardForm.addEventListener('submit', (evt) => {
     placesList.prepend(newCard);
     closeModal(addCardPopup);
     addCardForm.reset();
-});
+}
+
+// Подключение обработчиков к формам
+profileForm.addEventListener('submit', submitEditProfileForm);
+addCardForm.addEventListener('submit', submitAddCardForm);
 
 // Обработчик клика по карточке
 function handleCardClick(cardData) {
@@ -59,16 +65,6 @@ function handleCardClick(cardData) {
     imagePopupImage.alt = cardData.name;
     imagePopupCaption.textContent = cardData.name;
     openModal(imagePopup);
-}
-
-// Обработчик лайка
-function handleLikeClick(evt) {
-    evt.target.classList.toggle('card__like-button_is-active');
-}
-
-// Обработчик удаления карточки
-function handleDeleteClick(evt) {
-    evt.target.closest('.card').remove();
 }
 
 // Рендер начальных карточек

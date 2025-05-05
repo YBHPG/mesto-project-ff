@@ -1,6 +1,7 @@
+const template = document.querySelector('#card-template').content;
+
 export function createCard(cardData, handleCardClick, handleLikeClick, handleDeleteClick) {
-  const template = document.querySelector('#card-template').content;
-  const cardElement = template.querySelector('.card').cloneNode(true);
+  const cardElement = getCardTemplate(template);
 
   const cardImage = cardElement.querySelector('.card__image');
   const cardTitle = cardElement.querySelector('.card__title');
@@ -24,4 +25,8 @@ export function handleLikeClick(evt) {
 
 export function handleDeleteClick(evt) {
   evt.target.closest('.card').remove();
+}
+
+export function getCardTemplate(template) {
+  return template.querySelector('.card').cloneNode(true);
 }
