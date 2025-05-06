@@ -16,7 +16,24 @@
     </header>
     <main class="content">
       <section class="profile page__section">
-        <div class="profile__image"></div>
+        <!-- Кнопка-иконка для редактирования аватара -->
+        <div class="profile__image">
+          <button type="button" class="profile__avatar-edit"></button>
+        </div>
+
+        <!-- Попап смены аватара -->
+        <div class="popup popup_type_avatar">
+          <div class="popup__content">
+            <button type="button" class="popup__close"></button>
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class="popup__form" name="edit-avatar">
+              <input id="avatar-input" type="url" name="avatar" class="popup__input popup__input_type_avatar-link"
+                placeholder="Ссылка на картинку" required>
+              <span id="avatar-input-error" class="popup__error"></span>
+              <button type="submit" class="button popup__button popup__button_disabled" disabled>Сохранить</button>
+            </form>
+          </div>
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -39,9 +56,12 @@
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="edit-profile">
-          <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя" required>
-          <input type="text" name="description" class="popup__input popup__input_type_description" placeholder="Занятие"
+          <input id="name-input" type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя"
             required>
+          <span id="name-input-error" class="popup__error"></span>
+          <input id="description-input" type="text" name="description"
+            class="popup__input popup__input_type_description" placeholder="Занятие" required>
+          <span id="description-input-error" class="popup__error"></span>
           <button type="submit" class="button popup__button">Сохранить</button>
         </form>
       </div>
@@ -51,10 +71,12 @@
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new-place">
-          <input type="text" name="place-name" class="popup__input popup__input_type_card-name" placeholder="Название"
-            required>
-          <input type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку"
-            required>
+          <input id="card-name-input" type="text" name="card-name" class="popup__input popup__input_type_card-name"
+            placeholder="Название" required>
+          <span id="card-name-input-error" class="popup__error"></span>
+          <input id="card-link-input" type="url" name="link" class="popup__input popup__input_type_url"
+            placeholder="Ссылка на картинку" required>
+          <span id="card-link-input-error" class="popup__error"></span>
           <button type="submit" class="button popup__button">Сохранить</button>
         </form>
       </div>
@@ -75,7 +97,10 @@
       <div class="card__description">
         <h2 class="card__title">
         </h2>
-        <button type="button" class="card__like-button"></button>
+        <div class="card__like-container">
+          <button type="button" class="card__like-button"></button>
+          <span class="card__like-counter">0</span>
+        </div>
       </div>
     </li>
   </template>

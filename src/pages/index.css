@@ -33,3 +33,52 @@
     background-size: cover;
     background-position: center;
 }
+
+.card__like-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.card__like-counter {
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+}
+
+/* profile__avatar-edit.css */
+.profile__avatar-edit {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 29px 0 0;
+    background: url('../images/edit-icon.svg') center no-repeat;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.profile__image:hover .profile__avatar-edit {
+    opacity: 1;
+}
+
+.popup__error {
+    color: #ff0000;
+    font-size: 12px;
+    line-height: 15px;
+    min-height: 15px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.popup__error_visible {
+    display: block;
+}
+
+.popup__input_type_error {
+    border-bottom: 1px solid #ff0000;
+}
