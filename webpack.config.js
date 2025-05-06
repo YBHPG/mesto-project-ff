@@ -12,7 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js',
         assetModuleFilename: 'assets/[name][ext]',
-        publicPath: '', // или '/имя-репозитория/' если требуется
+        publicPath: '/', // или '/имя-репозитория/' если требуется
     },
 
     // Режим разработки по умолчанию

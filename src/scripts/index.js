@@ -29,6 +29,10 @@ const avatarPopup = document.querySelector('.popup_type_avatar');
 const avatarForm = avatarPopup.querySelector('.popup__form');
 const avatarInput = avatarForm.querySelector('.popup__input_type_avatar-link');
 
+const imagePopup = document.querySelector('.popup_type_image');
+const imagePopupImage = imagePopup.querySelector('.popup__image');
+const imagePopupCaption = imagePopup.querySelector('.popup__caption');
+
 // Включение валидации
 const validationConfig = {
     formSelector: '.popup__form',
@@ -50,7 +54,6 @@ profileEditButton.addEventListener('click', () => {
 });
 
 addCardButton.addEventListener('click', () => {
-    clearValidation(addCardForm, validationConfig);
     openModal(addCardPopup);
 });
 
@@ -87,6 +90,7 @@ addCardForm.addEventListener('submit', (evt) => {
             placesList.prepend(cardElement);
             closeModal(addCardPopup);
             addCardForm.reset();
+            clearValidation(addCardForm, validationConfig); // очищаем форму и валидацию только после успешного добавления
         })
         .catch((err) => {
             console.log(`Ошибка при добавлении карточки: ${err}`);
@@ -98,10 +102,6 @@ addCardForm.addEventListener('submit', (evt) => {
 
 // Обработчик клика по карточке
 function handleCardClick(cardData) {
-    const imagePopup = document.querySelector('.popup_type_image');
-    const imagePopupImage = imagePopup.querySelector('.popup__image');
-    const imagePopupCaption = imagePopup.querySelector('.popup__caption');
-
     imagePopupImage.src = cardData.link;
     imagePopupImage.alt = cardData.name;
     imagePopupCaption.textContent = cardData.name;

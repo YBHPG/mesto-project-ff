@@ -27,24 +27,14 @@ export function updateUserInfo(data) {
 export function getInitialCards() {
     return fetch(`${config.baseUrl}/cards`, {
         headers: config.headers,
-    }).then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    }).then(checkResponse);
 }
 
 // Получение информации о пользователе
 export function getUserInfo() {
     return fetch(`${config.baseUrl}/users/me`, {
         headers: config.headers,
-    }).then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    }).then(checkResponse);
 }
 
 // Добавление новой карточки
@@ -53,12 +43,7 @@ export function addCard(data) {
         method: 'POST',
         headers: config.headers,
         body: JSON.stringify(data),
-    }).then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    }).then(checkResponse);
 }
 
 // Удаление карточки
